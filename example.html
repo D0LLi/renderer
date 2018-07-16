@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Rendering example</title>
+</head>
+<body>
+<div id="output"></div>
+<script type="module">
+import template from './samples/key-iterate.js';
+import createRenderer from './lib/render.js';
+
+const elem = document.querySelector('#output');
+window.render = createRenderer(elem, template, {
+	items: [
+		{ id: 1, marked: true },
+		{ id: 2, marked: false },
+		{ id: 3, marked: false },
+		{ id: 4, marked: true }
+	],
+	expr1: 2, expr2: true, expr3: true
+});
+</script>
+</body>
+</html>
