@@ -1,18 +1,18 @@
-export default function template({ fragment, elementWithText, block }) {
+export default function template({ fragment, element, text, block }) {
 	const f = fragment();
 
-	f.appendChild(elementWithText('h1', 'Hello world'));
+	f.appendChild(element('h1')).appendChild(text('Hello world'));
 	const b = f.appendChild(block(cond0));
 	f.$blocks = [b];
 
 	return f;
 }
 
-function block0({ fragment, element, elementWithText, keyedIterator, block }) {
+function block0({ fragment, element, text, iterator, block }) {
 	const f = fragment();
-	f.appendChild(elementWithText('p', 'will iterate'));
+	f.appendChild(element('p')).appendChild(text('will iterate'));
 	const ul = f.appendChild(element('ul'));
-	const b = ul.appendChild(keyedIterator(get => get('items'), () => block(cond1), get => get('id')));
+	const b = ul.appendChild(iterator(get => get('items'), () => block(cond1)));
 
 	f.$blocks = [b];
 
@@ -30,9 +30,9 @@ function block1({ fragment, element, text, block }) {
 	return f;
 }
 
-function block2({ fragment, elementWithText }) {
+function block2({ fragment, element, text }) {
 	const f = fragment();
-	f.appendChild(elementWithText('strong', '*'));
+	f.appendChild(element('strong')).appendChild(text('*'));
 	return f;
 }
 

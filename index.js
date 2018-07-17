@@ -1,7 +1,7 @@
-import RenderContext from './context.js';
-import renderBlock from './block.js';
-import renderIterator from './iterator.js';
-import renderKeyedIterator from './keyed-iterator.js';
+import RenderContext from './lib/context.js';
+import renderBlock from './lib/block.js';
+import renderIterator from './lib/iterator.js';
+import renderKeyedIterator from './lib/keyed-iterator.js';
 
 /**
  * @param {HTMLElement} elem

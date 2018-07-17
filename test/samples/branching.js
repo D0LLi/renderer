@@ -1,13 +1,13 @@
-export default function template({ fragment, element, elementWithText, block }) {
+export default function template({ fragment, element, text, block }) {
 	const f = fragment();
 
-	f.appendChild(elementWithText('h1', 'Hello world'));
+	f.appendChild(element('h1')).appendChild(text('Hello world'));
 	const bc1 = f.appendChild(block(cond0));
 	const bq = f.appendChild(element('blockquote'));
 
-	bq.appendChild(elementWithText('p', 'Lorem ipsum 1'));
+	bq.appendChild(element('p')).appendChild(text('Lorem ipsum 1'));
 	const bc2 = bq.appendChild(block(cond3));
-	bq.appendChild(elementWithText('p', 'Lorem ipsum 2'));
+	bq.appendChild(element('p')).appendChild(text('Lorem ipsum 2'));
 
 	f.$blocks = [bc1, bc2];
 
@@ -42,10 +42,10 @@ function cond3(get) {
 	return block6; // <t-otherwise> block or undefined if absent
 }
 
-function block1({ fragment, element, elementWithText, block }) {
+function block1({ fragment, element, text, block }) {
 	const f = fragment();
 	const p = f.appendChild(element('p'));
-	p.appendChild(elementWithText('strong', 'top 1'));
+	p.appendChild(element('strong')).appendChild(text('top 1'));
 	const bc1 = f.appendChild(block(cond1));
 	const bc2 = f.appendChild(block(cond2));
 
@@ -54,33 +54,33 @@ function block1({ fragment, element, elementWithText, block }) {
 	return f;
 }
 
-function block2({ fragment, elementWithText }) {
+function block2({ fragment, element, text }) {
 	const f = fragment();
-	f.appendChild(elementWithText('div', 'top 2'));
+	f.appendChild(element('div')).appendChild(text('top 2'));
 	return f;
 }
 
-function block3({ fragment, elementWithText, text }) {
+function block3({ fragment, element, text }) {
 	const f = fragment();
-	f.appendChild(elementWithText('div', 'top 3'));
+	f.appendChild(element('div')).appendChild(text('top 3'));
 	f.appendChild(text('top 3.1'));
 	return f;
 }
 
-function block4({ fragment, elementWithText }) {
+function block4({ fragment, element, text }) {
 	const f = fragment();
-	f.appendChild(elementWithText('div', 'sub 1'));
+	f.appendChild(element('div')).appendChild(text('sub 1'));
 	return f;
 }
 
-function block5({ fragment, elementWithText }) {
+function block5({ fragment, element, text }) {
 	const f = fragment();
-	f.appendChild(elementWithText('div', 'sub 2'));
+	f.appendChild(element('div')).appendChild(text('sub 2'));
 	return f;
 }
 
-function block6({ fragment, elementWithText }) {
+function block6({ fragment, element, text }) {
 	const f = fragment();
-	f.appendChild(elementWithText('div', 'sub 3'));
+	f.appendChild(element('div')).appendChild(text('sub 3'));
 	return f;
 }
