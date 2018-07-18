@@ -89,16 +89,16 @@ class NodeShim {
 	 * @param {NodeShim} ref
 	 */
 	insertBefore(node, ref) {
-		const ix = this._getIndex(ref);
-		if (ix === -1) {
-			throw new Error('Not a child node');
-		}
-
 		if (node.nodeType === NodeShim.DOCUMENT_FRAGMENT_NODE) {
 			while (node.firstChild) {
 				this.insertBefore(node.firstChild, ref);
 			}
 		} else {
+			const ix = this._getIndex(ref);
+			if (ix === -1) {
+				throw new Error('Not a child node');
+			}
+
 			node.remove();
 			this.childNodes.splice(ix, 0, node);
 			node.parentNode = this;
